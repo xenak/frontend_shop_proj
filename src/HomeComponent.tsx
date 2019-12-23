@@ -17,14 +17,10 @@ export class Home extends React.Component<HomeComponentProps, {}> {
     constructor(props: Readonly<HomeComponentProps>) {
         super(props);
         // сразу переходим на главную страницу
-        this.props.history.push("/home/main")
-        //handleClick = (id)=>{
-         //   this.props.addToCart(id);
+        this.props.history.push("/home/main" +
+            "")
         }
 
-
-   // private logout() {
-    //}
 
     componentDidMount(): void {
 
@@ -46,9 +42,6 @@ export class Home extends React.Component<HomeComponentProps, {}> {
                                         <FontAwesomeIcon icon="shopping-cart"/>Cart
                                     </Button>
                                 </Link>
-                            </Nav.Item>
-                            <Nav.Item>
-                                <Button variant="outline-primary" >Sign out</Button>
                             </Nav.Item>
                         </Nav>
                     </Navbar.Collapse>

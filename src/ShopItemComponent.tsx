@@ -4,13 +4,15 @@ import Button from "react-bootstrap/Button";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import dataService, {ShopItem} from "./DataService";
 
+
 interface ShopItemComponentProps {
 
-    item: ShopItem;
+    item: ShopItem
 
 }
 
 export class ShopItemComponent extends React.Component<ShopItemComponentProps, any> {
+
 
     private async onNewTodoHandle(list: number) {
 
@@ -18,17 +20,22 @@ export class ShopItemComponent extends React.Component<ShopItemComponentProps, a
         let title = this.props.item.title;
         let image = this.props.item.image;
         let price = this.props.item.price;
+        let quantity = this.props.item.quantity;
+        //let cartItems = dataService.getCart()
 
 
-        let cartItem = new ShopItem(id,title, image,price,"admin");
-        //cartItem.login = "admin"
-        //cartItem = cartItem[id, login="admin",title,price]
+
+        let cartItem = new ShopItem(id,title, image,price,quantity);
+
+        //cartItems.toString() === cartItem.title
+
         await dataService.saveItem(cartItem)
 
         this.setState({
             item: [...this.state.item, cartItem]
         })
     }
+
 
 
 

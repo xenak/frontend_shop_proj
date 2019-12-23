@@ -1,6 +1,5 @@
 import React from 'react';
 import {BrowserRouter as Router, Redirect, Route, Switch} from "react-router-dom";
-import LoginPage from "./LoginPage";
 import dataService from "./DataService";
 import Home from "./HomeComponent";
 import {CartComponent} from "./CartComponent";
@@ -10,18 +9,14 @@ import {renderRoutes} from "react-router-config";
 
 const routes = [
     {
-        path: "/login",
-        component: LoginPage
-    },
-    {
         path: "/home",
         render: (params: any) => {
-         return true ? (
+            return true ? (
                 <Home {...params}/>
             ) : (
                 <Redirect
                     to={{
-                        pathname: "/login",
+                        pathname: "/home",
                         state: {from: params.location}
                     }}
                 />
@@ -35,7 +30,7 @@ const routes = [
             path: "/home/cart",
             component: CartComponent
         }, {
-            path: "/home/cart/order",
+            path: "/home/order",
             component: OrderComponent
         }]
     },
