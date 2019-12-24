@@ -21,7 +21,6 @@ export class ShopItemComponent extends React.Component<ShopItemComponentProps, a
         let image = this.props.item.image;
         let price = this.props.item.price;
         let quantity = this.props.item.quantity;
-        //let cartItems = dataService.getCart()
 
 
 

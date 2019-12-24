@@ -61,21 +61,6 @@ class DataService {
         return (await deletePromise).ok;
     }
 
-
-    /**
-     * Удалить все товары
-     * @param id идентификатор item'a
-     * @returns true, если получилось удалить
-     */
-
-    public async deleteCart(id:number): Promise<boolean> {
-
-        let deletePromise = fetch(`${DataService.DB_URL}/cart/${id}`, {
-            method: "DELETE"
-        });
-        return (await deletePromise).ok;
-    }
-
     /**
      * Добавить новый TodoItem на сервер
      * @param newItem новый TodoItem

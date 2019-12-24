@@ -39,19 +39,14 @@ export class OrderComponent extends React.Component<OrderComponentProps, OrderSt
 
         dataService.getCart().then(value => {
             this.setState({
-                item: value
+                item: value,
+                total: value.reduce(function(prev, cur) {
+                    return prev + cur.price
+                }, 0)
             });
         })
 
     }
-
-    thisPrice() {
-        const { item } = this.state;
-
-        const total = item.reduce(function(prev, cur) {
-            return prev + cur.price
-        }, 0);
-        }
 
 
     thisItems() {
@@ -83,6 +78,20 @@ export class OrderComponent extends React.Component<OrderComponentProps, OrderSt
         });
     }
 
+    private async onItemRemove(id: number) {
+        await dataService.deleteItem(id);
+        this.setState({
+            item: this.state.item.filter((item) => item.id !== id)
+        });
+    }
+
+    deleteAll(): void {
+
+        for (let i = 1; i < 20; i++) {
+            this.onItemRemove(i)
+        }
+        }
+
     private async onNewOrderHandle() {
         const {} = await dataService.commit(this.state.firstName, this.state.lastName, this.state.address, this.state.phone, this.state.total, this.state.item);
     }
@@ -102,8 +111,7 @@ export class OrderComponent extends React.Component<OrderComponentProps, OrderSt
             button = <Link to="/home/main">
                 <button className="btn btn-outline-secondary" type="button"
                         onClick={() => {
-                            this.onNewOrderHandle(); dataService.deleteItem(0)
-                                                    }}
+                            this.onNewOrderHandle(); this.deleteAll()}}
                 >Оформить заказ
                 </button>
             </Link>
