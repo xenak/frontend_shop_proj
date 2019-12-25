@@ -7,6 +7,7 @@ import Button from "react-bootstrap/Button";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {Link, RouteComponentProps, withRouter} from "react-router-dom";
 import {renderRoutes, RouteConfig} from "react-router-config";
+import {ButtonToolbar, Dropdown, DropdownButton} from "react-bootstrap";
 
 interface HomeComponentProps extends RouteComponentProps {
     route: RouteConfig
@@ -27,11 +28,12 @@ export class Home extends React.Component<HomeComponentProps, {}> {
     }
 
     render(): ReactNode {
+        // @ts-ignore
         return (
             <div className="App">
                 <Navbar bg="dark" variant="dark">
                     <Link to={'/home/main'}>
-                        <Navbar.Brand className="brand">eShop</Navbar.Brand>
+                        <Navbar.Brand className="brand">Интернет-магазин цветов</Navbar.Brand>
                     </Link>
                     <Navbar.Collapse>
                         <Nav className="mr-auto"/>
@@ -39,13 +41,33 @@ export class Home extends React.Component<HomeComponentProps, {}> {
                             <Nav.Item className="mr-2">
                                 <Link to="/home/cart">
                                     <Button variant="outline-danger">
-                                        <FontAwesomeIcon icon="shopping-cart"/>Cart
+                                        <FontAwesomeIcon icon="shopping-cart"/> Корзина
                                     </Button>
                                 </Link>
                             </Nav.Item>
                         </Nav>
                     </Navbar.Collapse>
                 </Navbar>
+
+{/*навигация*/}
+                <ButtonToolbar style={{margin:'10px'}}>
+                {['Букеты', 'Повод', 'Стоимость'].map(
+                    variant => (
+                        <DropdownButton
+                            title={variant}
+                            variant={variant.toLowerCase()}
+                            id={`dropdown-variants-${variant}`}
+                            key={variant}
+                        >
+                            <Dropdown.Item eventKey="1">Из роз</Dropdown.Item>
+                            <Dropdown.Item eventKey="2">Из хризантем</Dropdown.Item>
+                            <Dropdown.Item eventKey="3"> Из гортензий</Dropdown.Item>
+                            <Dropdown.Divider/>
+                            <Dropdown.Item eventKey="4">Показать все</Dropdown.Item>
+                        </DropdownButton>
+                    ),
+                )}
+            </ButtonToolbar>
 
                 <main className="py-md-3 px-md-5">
 
