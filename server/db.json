@@ -49,29 +49,6 @@
       "price": 3090
     }
   ],
-  "cart": [
-    {
-      "title": "Букет из гербер, белых роз и альстромерии",
-      "image": "https://www.6665666.ru/media/cache/ef/c8/efc88c79d94cf774fe93ef9d8eb164b0.jpg",
-      "price": 2325,
-      "login": "admin",
-      "id": 1
-    },
-    {
-      "title": "Букет из 5 голубых гортензий",
-      "image": "https://www.6665666.ru/media/cache/b0/d7/b0d7a21f4969b2593bf6556de5046752.jpg",
-      "price": 2750,
-      "id": 2
-    }
-  ],
-  "user": [
-    {
-      "login": "admin",
-      "password": "admin"
-    },
-    {
-      "login": "user",
-      "password": "user"
-    }
-  ]
+  "cart": [],
+  "order": []
 }
