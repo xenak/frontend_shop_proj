@@ -46,14 +46,13 @@ export class ShopItemComponent extends React.Component<ShopItemComponentProps, a
                 <Card.Body>
                     <Card.Title>{this.props.item.title}</Card.Title>
                     <Card.Text>
-                        <div className="price">${this.props.item.price}</div>
-
-                        Some quick example text to build on the card title and
-                        make up the bulk of
-                        the card's content.
+                        <div className="price">₽{this.props.item.price}</div>
+                        Бесплатная упаковка на выбор: лента, крафт, дизайнерская упаковка.
+                        Оттенок и размер бутона могут немного отличаться от представленного на фото.
+                        Указанные цены действуют при оформлении онлайн-заказа на сайте.
                     </Card.Text>
                     <Button variant="success">
-                        <FontAwesomeIcon icon="plus"/><span className="ml-1" onClick={() => this.onNewTodoHandle(this.props.item.id)} > Add to cart</span>
+                        <FontAwesomeIcon icon="plus"/><span className="ml-1" onClick={() => this.onNewTodoHandle(this.props.item.id)} > В корзину</span>
                     </Button>
                 </Card.Body>
             </Card>
