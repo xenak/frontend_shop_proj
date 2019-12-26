@@ -110,7 +110,7 @@ export class OrderComponent extends React.Component<OrderComponentProps, OrderSt
         }, 0);
 
 
-        const state = (this.state.phone.length >= 10 && this.state.firstName.length > 1 && this.state.lastName.length > 1 && this.state.address.length > 10 && this.state.email.length > 6)
+        const state = (this.state.phone.length >= 10 && this.state.firstName.length > 1 && this.state.lastName.length > 1 && this.state.address.length > 5 && this.state.email.length > 6)
         let button;
 
         if (state) {

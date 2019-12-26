@@ -56,6 +56,7 @@ export class ShopItemComponent extends React.Component<ShopItemComponentProps, a
                         Оттенок и размер бутона могут немного отличаться от представленного на фото.
                         Указанные цены действуют при оформлении онлайн-заказа на сайте.
                     </Card.Text>
+
                            <select onChange={event => this.changeQuantity(event.target.value)}>
                                <option>1</option>
                                <option>2</option>
@@ -68,12 +69,11 @@ export class ShopItemComponent extends React.Component<ShopItemComponentProps, a
                                <option>9</option>
                                <option>10</option>
                            </select>
-                    <Button variant="success">
+                    <Button variant="success" style={{float: 'right'}}>
                         <FontAwesomeIcon icon="plus"/><span className="ml-1" onClick={() => this.onNewTodoHandle(this.props.item.id)} > В корзину</span>
                     </Button>
                 </Card.Body>
             </Card>
         );
     }
-
 }
