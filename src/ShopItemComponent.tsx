@@ -32,6 +32,8 @@ export class ShopItemComponent extends React.Component<ShopItemComponentProps, a
         let title = this.props.item.title;
         let image = this.props.item.image;
         let price = this.props.item.price;
+        let quantity = this.props.item.quantity;
+        let type = this.props.item.type;
 
         let cartItem = new ShopItem(id, title, image, price*this.state.quantity, this.state.quantity);
 
@@ -41,6 +43,7 @@ export class ShopItemComponent extends React.Component<ShopItemComponentProps, a
             item: [...this.state.item, cartItem]
         })
     }
+
 
     render(): React.ReactElement<any, string | React.JSXElementConstructor<any>> | string | number | {} | React.ReactNodeArray | React.ReactPortal | boolean | null | undefined {
 

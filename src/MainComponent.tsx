@@ -9,23 +9,24 @@ import Col from "react-bootstrap/Col";
 import {ShopItemComponent} from "./ShopItemComponent";
 import FormControl from "react-bootstrap/FormControl";
 import InputGroup from "react-bootstrap/InputGroup";
+import {Dropdown} from "react-bootstrap";
 
 
 interface MainComponentState {
 
     items: ShopItem[];
-
+    filtered: ShopItem[];
     searchBarValue: string;
 
 }
 
 export class Main extends React.Component<{}, MainComponentState> {
 
-
     constructor(props: Readonly<{}>) {
         super(props);
         this.state = {
             items: [],
+            filtered: [],
             searchBarValue: ""
         };
 
@@ -33,7 +34,8 @@ export class Main extends React.Component<{}, MainComponentState> {
         dataService.getShopItems().then(value => {
             this.setState({
                 ...this.state,
-                items: value
+                items: value,
+                filtered: value
             });
         });
 
@@ -61,10 +63,8 @@ export class Main extends React.Component<{}, MainComponentState> {
         let items: ShopItem[] = [];
 
         for (let i = 0; i < 20; i++) {
-            items.push(new ShopItem(0, `House ${i}`, "https://specials-images.forbesimg.com/imageserve/1026205392/960x0.jpg?fit=scale", 10, 0));
+            items.push(new ShopItem(0, `House ${i}`, "https://specials-images.forbesimg.com/imageserve/1026205392/960x0.jpg?fit=scale", 10, 0, 'roses'));
         }
-
-
     }
 
     changeHandler(newValue: string) {
@@ -81,6 +81,25 @@ export class Main extends React.Component<{}, MainComponentState> {
                 items: value
             });
         });
+    }
+
+    onTypeSelected(newType: string) {
+        if (newType == 'all') {
+            dataService.getShopItems().then(value => {
+                this.setState({
+                    ...this.state,
+                    items: value,
+                    filtered: value
+                });
+            });
+        }
+        else {
+            const filtered = this.state.items.filter(item => item.type == newType);
+            this.setState({
+                ...this.state,
+                filtered: filtered
+            });
+        }
     }
 
     render(): ReactNode {
@@ -102,15 +121,27 @@ export class Main extends React.Component<{}, MainComponentState> {
                     </InputGroup.Append>
                 </InputGroup>
 
+                <Dropdown style={{margin:'10px'}}>
+                    <Dropdown.Toggle variant="success" id="dropdown-basic">
+                        Букеты
+                    </Dropdown.Toggle>
+                    <Dropdown.Menu>
+                        <Dropdown.Item onClick={() => this.onTypeSelected('roses')}>Из роз</Dropdown.Item>
+                        <Dropdown.Item onClick={() => this.onTypeSelected('chrysanthemums')}>Из хризантем</Dropdown.Item>
+                        <Dropdown.Item onClick={() => this.onTypeSelected('hydrangeas')}>Из гортензий</Dropdown.Item>
+                        <Dropdown.Item onClick={() => this.onTypeSelected('all')}>Показать все</Dropdown.Item>
+                    </Dropdown.Menu>
+                </Dropdown>
+
                 <Container>
                     {
-                        this.arraySplit(this.state.items).map(line => {
+                        this.arraySplit(this.state.filtered).map(line => {
                             return (
                                 <Row className="mb-2">
                                     {
                                         line.map(shopItem => {
                                             return (<Col md="3" xs="12">
-                                                    <ShopItemComponent item={shopItem} quantity={1}/>
+                                                  <ShopItemComponent item={shopItem} quantity={1}/>
                                                 </Col>
                                             )
                                         })
