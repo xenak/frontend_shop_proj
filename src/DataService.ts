@@ -91,16 +91,17 @@ class DataService {
      * @param userAddress
      * @param userPhone
      * @param userTotal
+     * @param userEmail
      * @param userCart
      */
-    public async commit(userFname: string, userLname: string, userAddress: string, userPhone: string, userTotal: number, userCart: any) {
+    public async commit(userFname: string, userLname: string, userAddress: string, userPhone: string, userTotal: number, userEmail: string, userCart: any) {
         let postPromise = fetch(`${DataService.DB_URL}/order`, {
         headers: {
             'Accept': 'application/json',
             'Content-Type': 'application/json'
         },
         method: "POST",
-        body: JSON.stringify([{'fname': userFname, 'lname': userLname, 'address': userAddress, 'phone': userPhone, 'total': userTotal, 'cart': userCart}])
+        body: JSON.stringify([{'fname': userFname, 'lname': userLname, 'address': userAddress, 'phone': userPhone, 'total': userTotal, 'email': userEmail, 'cart': userCart}])
     });
     return await (await postPromise).json();
 }
