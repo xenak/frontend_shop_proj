@@ -1,11 +1,9 @@
 import * as React from "react";
 import dataService, {ShopItem} from "./DataService";
 import "./home.scss";
-import Button from "react-bootstrap/Button";
-import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {Link, RouteComponentProps, withRouter} from "react-router-dom";
+import {Link, RouteComponentProps} from "react-router-dom";
 import Alert from "react-bootstrap/Alert"
-
+import Form from "react-bootstrap/Form"
 
 interface OrderState {
 
@@ -14,7 +12,8 @@ interface OrderState {
     address: string;
     phone: string;
     total: number;
-    cartitems: []
+    email: string;
+    cartitems: [];
     item: ShopItem[];
 
 }
@@ -32,6 +31,7 @@ export class OrderComponent extends React.Component<OrderComponentProps, OrderSt
             lastName: "",
             address: "",
             phone: "",
+            email: "",
             total: 0,
             item: [],
             cartitems: []
@@ -78,6 +78,12 @@ export class OrderComponent extends React.Component<OrderComponentProps, OrderSt
         });
     }
 
+    changeEmail(newemail: string) {
+        this.setState({
+            email: newemail
+        });
+    }
+
     private async onItemRemove(id: number) {
         await dataService.deleteItem(id);
         this.setState({
@@ -87,13 +93,13 @@ export class OrderComponent extends React.Component<OrderComponentProps, OrderSt
 
     deleteAll(): void {
 
-        for (let i = 1; i < 20; i++) {
+        for (let i = 1; i < 100; i++) {
             this.onItemRemove(i)
         }
         }
 
     private async onNewOrderHandle() {
-        const {} = await dataService.commit(this.state.firstName, this.state.lastName, this.state.address, this.state.phone, this.state.total, this.state.item);
+        const {} = await dataService.commit(this.state.firstName, this.state.lastName, this.state.address, this.state.phone, this.state.total, this.state.email, this.state.item);
     }
 
     render(): React.ReactNode {
@@ -104,7 +110,7 @@ export class OrderComponent extends React.Component<OrderComponentProps, OrderSt
         }, 0);
 
 
-        const state = (this.state.phone.length === 10 && this.state.firstName.length > 1 && this.state.lastName.length > 1 && this.state.address.length > 10)
+        const state = (this.state.phone.length >= 10 && this.state.firstName.length > 1 && this.state.lastName.length > 1 && this.state.address.length > 10 && this.state.email.length > 6)
         let button;
 
         if (state) {
@@ -124,42 +130,50 @@ export class OrderComponent extends React.Component<OrderComponentProps, OrderSt
             </Alert>
         }
         return (
-            <div className="input-group mb-3">
-                <div className="input-group mb-3">
-                    <div>
-                    Имя: <input type="text" onChange={event => this.changeFName(event.target.value)}
-                           className="form-control"
-                            placeholder="Имя"
-                                        required={true}/>
+            <div className="App">
+                <Form>
+                    <Form.Label> Имя </Form.Label>
+                        <input type="text" onChange={event => this.changeFName(event.target.value)}
+                                    className="form-control"
+                                    placeholder="Имя"
+                                    required={true}/>
 
-                    </div>
-                    <div>
-                        Фамилия: <input type="text" onChange={event => this.changeLName(event.target.value)}
-                       className="form-control"
-                       placeholder="Фамилия"
-                       required={true}/>
-                    </div>
-                </div>
-                <div className="input-group mb-3">
-                    Адрес: <input onChange={event => this.changeAddress(event.target.value)}
-                       className="form-control"
-                       placeholder="Адрес"
-                       required={true}/>
-                       </div>
-                <div className="input-group mb-3">
-                        Номер телефона: <input onChange={event => this.changePhone(event.target.value)}
-                       className="form-control"
-                       placeholder="Номер телефона"
-                       inputMode={"tel"}
-                       required={true}/>
+                    <Form.Label> Фамилия </Form.Label>
+                        <input type="text" onChange={event => this.changeLName(event.target.value)}
+                                        className="form-control"
+                                        placeholder="Фамилия"
+                                        required={true}/>
+                    <Form.Label> Адрес </Form.Label>
+                        <input onChange={event => this.changeAddress(event.target.value)}
+                                      className="form-control"
+                                      placeholder="Адрес"
+                                      required={true}/>
+
+                    <Form.Label> Номер телефона </Form.Label>
+                        <input onChange={event => this.changePhone(event.target.value)}
+                                               className="form-control"
+                                               placeholder="+79995558877"
+                                               inputMode={"tel"}
+                                               type="number"
+                                               required={true}/>
+                    <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
+
+
+                    <Form.Label> Почтовый адрес </Form.Label>
+                    <input onChange={event => this.changeEmail(event.target.value)}
+                           className="form-control"
+                           placeholder="my@email.com"
+                           required={true}/>
+                </Form>
 
                        <div>
                            Итого: {total}
                        </div>
 
-                       </div>
+
                 {button}
             </div>
+
         );
     }
 }

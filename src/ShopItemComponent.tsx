@@ -23,10 +23,7 @@ export class ShopItemComponent extends React.Component<ShopItemComponentProps, a
         let quantity = this.props.item.quantity;
 
 
-
-        let cartItem = new ShopItem(id,title, image,price,quantity);
-
-        //cartItems.toString() === cartItem.title
+        let cartItem = new ShopItem(id, title, image, price, quantity);
 
         await dataService.saveItem(cartItem)
 
@@ -34,9 +31,6 @@ export class ShopItemComponent extends React.Component<ShopItemComponentProps, a
             item: [...this.state.item, cartItem]
         })
     }
-
-
-
 
     render(): React.ReactElement<any, string | React.JSXElementConstructor<any>> | string | number | {} | React.ReactNodeArray | React.ReactPortal | boolean | null | undefined {
         return (

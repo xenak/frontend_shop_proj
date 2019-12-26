@@ -64,9 +64,6 @@ export class Main extends React.Component<{}, MainComponentState> {
             items.push(new ShopItem(0, `House ${i}`, "https://specials-images.forbesimg.com/imageserve/1026205392/960x0.jpg?fit=scale", 10, 0));
         }
 
-        // this.setState({
-        //     items: this.arraySplit(items)
-        // });
 
     }
 

@@ -20,23 +20,23 @@ export class CartComponent extends React.Component<{}, CartState> {
     constructor(props: Readonly<{}>) {
         super(props);
         this.state = {
-        cartItems: []
-    };
+            cartItems: []
+        };
 
-    dataService.getCart().then(value => {
-    this.setState({
-                      cartItems: value
-                  });
-})
+        dataService.getCart().then(value => {
+            this.setState({
+                cartItems: value
+            });
+        })
 
-}
+    }
 
     private async onItemRemove(id: number) {
         await dataService.deleteItem(id);
-            this.setState({
-                cartItems: this.state.cartItems.filter((item) => item.id !== id)
-            });
-        }
+        this.setState({
+            cartItems: this.state.cartItems.filter((item) => item.id !== id)
+        });
+    }
 
 
 
@@ -56,12 +56,12 @@ export class CartComponent extends React.Component<{}, CartState> {
 
                 <Table striped bordered hover>
                     <thead>
-                        <tr>
-                           <th>Название товара</th>
-                            <th>Количество</th>
-                            <th>Стоимость</th>
-                            <th> </th>
-                        </tr>
+                    <tr>
+                        <th>Название товара</th>
+                        <th>Количество</th>
+                        <th>Стоимость</th>
+                        <th> </th>
+                    </tr>
                     </thead>
                     {this.state.cartItems.map(ShopItem => {
                         return (
@@ -71,22 +71,22 @@ export class CartComponent extends React.Component<{}, CartState> {
                                 <td>1</td>
                                 <td>{ShopItem.price}</td>
                                 <td>
-                            <button className="btn btn-outline-secondary" type="button"
-                                    onClick={() => {
-                                        this.onItemRemove(ShopItem.id)
-                                    }}
-                            >Удалить
-                            </button>
+                                    <button className="btn btn-outline-secondary" type="button"
+                                            onClick={() => {
+                                                this.onItemRemove(ShopItem.id)
+                                            }}
+                                    >Удалить
+                                    </button>
 
                                 </td>
-                                </tr>
+                            </tr>
                             </tbody>
                         )
                     })}
                 </Table>
 
 
-               <div>Итоговая сумма: {msgTotal}</div>
+                <div>Итоговая сумма: {msgTotal}</div>
                 <Link to="/home/order">
                     <Button variant="outline-danger" disabled={!enabled}>
                         Заказать
