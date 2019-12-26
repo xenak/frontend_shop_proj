@@ -110,7 +110,7 @@ export class Main extends React.Component<{}, MainComponentState> {
                                     {
                                         line.map(shopItem => {
                                             return (<Col md="3" xs="12">
-                                                    <ShopItemComponent item={shopItem}/>
+                                                    <ShopItemComponent item={shopItem} quantity={1}/>
                                                 </Col>
                                             )
                                         })

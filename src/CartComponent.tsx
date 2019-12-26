@@ -1,10 +1,8 @@
 import React from "react";
 import dataService, {ShopItem} from "./DataService";
 import Button from "react-bootstrap/Button";
-import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import Navbar from "react-bootstrap/Navbar";
 import "./home.scss";
-import {Link, RouteComponentProps, withRouter} from "react-router-dom";
+import {Link} from "react-router-dom";
 import Alert from 'react-bootstrap/Alert';
 import Table from 'react-bootstrap/Table'
 
@@ -68,7 +66,7 @@ export class CartComponent extends React.Component<{}, CartState> {
                             <tbody>
                             <tr>
                                 <td>{ShopItem.title}</td>
-                                <td>1</td>
+                                <td>{ShopItem.quantity}</td>
                                 <td>{ShopItem.price}</td>
                                 <td>
                                     <button className="btn btn-outline-secondary" type="button"

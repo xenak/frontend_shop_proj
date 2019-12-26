@@ -4,57 +4,49 @@
       "id": 0,
       "title": "Букет из 51 красной розы 50 см",
       "image": "https://www.6665666.ru/media/cache/5c/cf/5ccf53359ff2a1f3dff5e025bdfed2b5.jpg",
-      "price": 2500,
-      "quantity": 1
+      "price": 2500
     },
     {
       "id": 1,
       "title": "Букет из хризантемы кустовой микс и лизиантуса",
       "image": "https://www.6665666.ru/media/cache/78/22/7822a0eaa0f668dfd11cba37aa96852f.jpg",
-      "price": 4050,
-      "quantity": 1
+      "price": 4050
     },
     {
       "id": 2,
       "title": "Букет из гербер, белых роз и альстромерии",
       "image": "https://www.6665666.ru/media/cache/ef/c8/efc88c79d94cf774fe93ef9d8eb164b0.jpg",
-      "price": 2325,
-      "quantity": 1
+      "price": 2325
     },
     {
       "id": 3,
       "title": "Букет из 5 голубых гортензий",
       "image": "https://www.6665666.ru/media/cache/b0/d7/b0d7a21f4969b2593bf6556de5046752.jpg",
-      "price": 2750,
-      "quantity": 1
+      "price": 2750
     },
     {
       "id": 4,
       "title": "Букет из кустовых роз микс и хризантем",
       "image": "https://www.6665666.ru/media/cache/88/3e/883ed3bd2175ab0992a6a5a88227f3a0.jpg",
-      "price": 2650,
-      "quantity": 1
+      "price": 2650
     },
     {
       "id": 5,
       "title": "Букет из белых роз и кустовых хризантем ",
       "image": "https://www.6665666.ru/media/cache/38/26/382652da642b161979748ce2b7069c08.jpg",
-      "price": 2125,
-      "quantity": 1
+      "price": 2125
     },
     {
       "id": 6,
       "title": "Букет из кустовых роз микс и лизиантуса",
       "image": "https://www.6665666.ru/media/cache/47/8e/478e87975ed344c5c9608f18063c87fc.jpg",
-      "price": 1270,
-      "quantity": 1
+      "price": 1270
     },
     {
       "id": 7,
       "title": "Букет из белых роз и лизиантуса",
       "image": "https://www.6665666.ru/media/cache/ce/33/ce33e0b57ed20711fab7dd00d0dca82f.jpg",
-      "price": 3090,
-      "quantity": 1
+      "price": 3090
     }
   ],
   "cart": [],
