@@ -49,25 +49,7 @@ export class Home extends React.Component<HomeComponentProps, {}> {
                     </Navbar.Collapse>
                 </Navbar>
 
-{/*навигация*/}
-                <ButtonToolbar style={{margin:'10px'}}>
-                {['Букеты', 'Повод', 'Стоимость'].map(
-                    variant => (
-                        <DropdownButton
-                            title={variant}
-                            variant={variant.toLowerCase()}
-                            id={`dropdown-variants-${variant}`}
-                            key={variant}
-                        >
-                            <Dropdown.Item eventKey="1">Из роз</Dropdown.Item>
-                            <Dropdown.Item eventKey="2">Из хризантем</Dropdown.Item>
-                            <Dropdown.Item eventKey="3"> Из гортензий</Dropdown.Item>
-                            <Dropdown.Divider/>
-                            <Dropdown.Item eventKey="4">Показать все</Dropdown.Item>
-                        </DropdownButton>
-                    ),
-                )}
-            </ButtonToolbar>
+
 
                 <main className="py-md-3 px-md-5">
 

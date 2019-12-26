@@ -6,7 +6,6 @@ import dataService, {ShopItem} from "./DataService";
 
 
 interface ShopItemComponentProps {
-
     item: ShopItem
 
 }
@@ -21,10 +20,10 @@ export class ShopItemComponent extends React.Component<ShopItemComponentProps, a
         let image = this.props.item.image;
         let price = this.props.item.price;
         let quantity = this.props.item.quantity;
+        let type = this.props.item.type;
+        
 
-
-
-        let cartItem = new ShopItem(id,title, image,price,quantity);
+        let cartItem = new ShopItem(id,title,image,price,quantity,type);
 
         //cartItems.toString() === cartItem.title
 
@@ -34,7 +33,6 @@ export class ShopItemComponent extends React.Component<ShopItemComponentProps, a
             item: [...this.state.item, cartItem]
         })
     }
-
 
 
 

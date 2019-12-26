@@ -6,13 +6,15 @@ export class ShopItem {
     image: string;
     price: number;
     quantity: number;
+    type: string;
 
-    constructor(id: number, title: string, image: string, price: number, quantity:number) {
+    constructor(id: number, title: string, image: string, price: number, quantity: number, type: string) {
         this.id = id;
         this.title = title;
         this.image = image;
         this.price = price;
         this.quantity = quantity;
+        this.type = type;
     }
 
 }
